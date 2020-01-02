@@ -25,7 +25,7 @@ object GameProcessManager {
     val player = Player()
     deck.show()
     hand.show()
-    val (nhand, ndeck) = player.draw(hand, deck)
+    val (nhand, ndeck) = player.drawN(hand, deck, 3)
     ndeck.show()
     nhand.show()
   }
