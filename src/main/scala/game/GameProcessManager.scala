@@ -22,11 +22,11 @@ object GameProcessManager {
   def start(): Unit = {
     val deck = Deck()
     val hand = Hand()
-    val player = Player()
+    val player = Player(hand, deck)
     deck.show()
     hand.show()
-    val (nhand, ndeck) = player.drawN(hand, deck, 3)
-    ndeck.show()
-    nhand.show()
+    val nPlayer = player.drawN(3)
+    nPlayer.deck.show()
+    nPlayer.hand.show()
   }
 }
