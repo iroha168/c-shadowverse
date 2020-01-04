@@ -9,14 +9,14 @@ final case class Player(hand: Hand, deck: Deck) {
     Player(newHand, newDeck)
   }
 
-  def drawN(n: Int): Player = {
+  def drawN(n: Int): Either[PlayerException, Player] = {
     if(n >= 1) {
       val player = draw()
       player.drawN(n - 1)
     }else if(n == 0){
-      Player(hand, deck)
+      Right(Player(hand, deck))
     }else{
-      throw new RuntimeException("Something wrong") // TODO do a proper error handling
+      Left(NegativeDrawNumberException)
     }
   }
 }

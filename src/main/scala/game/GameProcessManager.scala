@@ -25,8 +25,11 @@ object GameProcessManager {
     val player = Player(hand, deck)
     deck.show()
     hand.show()
-    val nPlayer = player.drawN(3)
-    nPlayer.deck.show()
-    nPlayer.hand.show()
+    for {
+      nPlayer <- player.drawN(3)
+    } yield {
+      nPlayer.deck.show()
+      nPlayer.hand.show()
+    }
   }
 }
